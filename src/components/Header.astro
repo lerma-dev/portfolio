@@ -1,0 +1,107 @@
+---
+import Logo from '@icons/Logo.astro';
+import IconGithub from '@icons/IconGithub.astro';
+import IconMenu from '@icons/IconMenu.astro';
+---
+<header>
+  <nav id="navbar" class="nav-center">
+    <a id="logo-navbar" class="logo" href="/">
+      <Logo class="icon-xl"/>
+      <div class="logo-text">
+        lerma<span>.dev</span>
+      </div>
+    </a>
+    <div class="menu-toggle" id="menu-toggle">
+      <IconMenu id="menu-icon" />
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="/#aplicaciones">Aplicaciones</a>
+      <a href="/about">Sobre el Portal</a>
+      <a href="/about-me">Sobre Mi</a>
+      <a href="https://github.com/lerma-dev" class="btn-github" target="_blank" rel="noopener noreferrer">
+        <IconGithub class="icon-md"/>  
+        Github
+      </a>   
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* NAVBAR - ESTILO DOCK FLOTANTE */
+  nav {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    min-width: 60%;
+    max-width: 90%;
+    height: 60px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    backdrop-filter: blur(12px);
+    --webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    z-index: 1000;
+  }
+  .nav-center {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  /* Links de la navegacion */
+  .nav-links {
+    display: flex;
+    gap: 10px;
+  }
+  .nav-links a {
+    color: var(--lt-text-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: var(--transition);
+    opacity: 0.9;
+  }
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+    color: #fff;
+  }
+  .btn-github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);  
+    gap: 2px;
+  }
+
+  /* --- LOGO --- */
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    gap: 5px;
+  }
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: -1px;
+    color: var(--lt-text-color);
+  }
+  .logo-text span {
+    color: var(--lt-primary-color);
+  }
+</style>

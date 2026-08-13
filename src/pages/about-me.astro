@@ -1,0 +1,360 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { AboutMe } from "@lib/Metadata.ts";
+import { Image } from "astro:assets";
+import IconGithub from "@icons/IconGithub.astro";
+import IconVscode from "@icons/IconVscode.astro";
+import IconReact from "@icons/IconReact.astro";
+import IconGit from "@icons/IconGit.astro";
+import IconWindows from "@icons/IconWindows.astro";
+import IconTux from "@icons/IconTux.astro";
+import IconHtml from "@icons/IconHtml.astro";
+import IconCSS from "@icons/IconCSS.astro";
+import IconJS from "@icons/IconJS.astro";
+import IconIonic from "@icons/IconIonic.astro";
+import IconPhp from "@icons/IconPhp.astro";
+import IconNode from "@icons/iconNode.astro";
+import IconDelfin from "@icons/IconDelfin.astro";
+import IconExpress from "@icons/iconExpress.astro";
+---
+
+<Layout {...AboutMe}>
+  <section class="about-me-section">
+    <div class="about-perfil">
+      <div class="round">
+        <Image
+          src="/lerma-dev.webp"
+          alt="Foto de perfil de github"
+          class="perfil"
+          loading="eager"
+          decoding="async"
+          width={120}
+          height={120}
+        />
+      </div>
+      <div class="about-perfil-text">
+        <span class="greeting">¡Hola! 👋</span>
+        <h1>Soy Héctor Lerma</h1>
+      </div>
+    </div>
+    <h2 class="about-me-title">¿Sobre Mí?</h2>
+    <p class="about-me-description">
+      Yo soy un estudiante de ingeniería en desarrollo de software
+      multiplataforma, apasionado por la tecnología me encanta aprender cosas
+      nuevas y compartir mis conocimientos con los demás. En este sitio web
+      comparto todos mis proyectos que quiero que el mundo conozca, mi objetivo
+      es inspirar a otros a seguir hacer todo los que les gusta y nunca rendirse
+      hasta lograrlo. Si quieres saber más sobre mí o mis proyectos, no dudes en
+      contactarme a través de mis redes sociales o por correo electrónico.
+      ¡Estoy siempre abierto a nuevas oportunidades y colaboraciones!
+    </p>
+
+    <div class="skills-section">
+      <h2>Mis Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category frontend">
+          <h3>Frontend</h3>
+          <span>
+            <IconHtml class="icon-sm" style="color: #f88417" />
+            HTML
+          </span>
+          <span>
+            <IconCSS class="icon-sm" style="color: #006dfc" />
+            CSS
+          </span>
+          <span>
+            <IconJS class="icon-sm" style="color: #fffb00" />
+            JavaScript
+          </span>
+          <span>
+            <IconReact class="icon-sm" style="color: #17a6f8" />
+            React
+          </span>
+          <span>
+            <IconIonic class="icon-sm" style="color: #1a65eb" />
+            Ionic + Capacitor
+          </span>
+        </div>
+        <div class="skill-category backend">
+          <h3>Backend & BD</h3>
+          <span>
+            <IconPhp class="icon-sm" style="color: #b74ee0" />
+            PHP
+          </span>
+          <span>
+            <IconNode class="icon-sm" style="color: #81CD38" />
+            Node.js
+          </span>
+          <span>
+            <IconExpress class="icon-sm" style="color: #fff" />
+            Express
+          </span>
+          <span>
+            <IconDelfin class="icon-sm" style="color: #17a6f8" />
+            MySQL
+          </span>
+        </div>
+        <div class="skill-category tools">
+          <h3>Herramientas</h3>
+          <span>
+            <IconGit class="icon-sm" style="color: #f36a0f" />
+            Git
+          </span>
+          <span>
+            <IconGithub class="icon-sm" />
+            Github
+          </span>
+          <span>
+            <IconWindows class="icon-sm" style="color: #17a6f8" />
+            Windows
+          </span>
+          <span>
+            <IconTux class="icon-sm" style="color: #fff" />
+            Linux
+          </span>
+          <span>
+            <IconVscode class="icon-sm" style="color: #0065a9;" />
+            Visual Studio Code
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="philosophy-section">
+      <h2>Filosofía de Desarrollo</h2>
+      <div class="philosophy-container">
+        <div class="philosophy-card privacy">
+          <h3>Privacidad y Datos</h3>
+          <p>
+            Me apasiona el software libre de telemetría invasiva y publicidad.
+            Creo firmemente en la soberanía de los datos del usuario.
+          </p>
+        </div>
+        <div class="philosophy-card performance">
+          <h3>Rendimiento y Control</h3>
+          <p>
+            Prefiero el control y la ligereza del código nativo, optimizando
+            cada funcionalidad para que corra de manera fluida y eficiente.
+          </p>
+        </div>
+        <div class="philosophy-card open-source">
+          <h3>Open Source y Comunidad</h3>
+          <p>
+            Creo en el poder del código abierto para fomentar la colaboración y
+            el aprendizaje. Compartir mis proyectos es una forma de contribuir a
+            la comunidad y ayudar a otros a crecer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-me-section {
+    width: 100%;
+    padding: 80px 0 100px;
+    /* El gradiente ahora cubre todo el ancho de la pantalla */
+    background:
+      radial-gradient(
+        circle at 50% 180px,
+        rgba(23, 166, 248, 0.15) 0%,
+        transparent 70%
+      ),
+      var(--lt-bg);
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Hero / Perfil Header */
+  .about-perfil {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+
+  .about-perfil-text {
+    text-align: left;
+  }
+
+  .about-perfil-text .greeting {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--lt-primary-color);
+    background: rgba(23, 166, 248, 0.12);
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(23, 166, 248, 0.3);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .about-perfil h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--lt-text-color, #ffffff);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid var(--lt-primary-color);
+    padding: 4px;
+    box-shadow: 0 0 25px rgba(23, 166, 248, 0.35);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .round:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 35px rgba(23, 166, 248, 0.55);
+  }
+
+  .perfil {
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+  }
+
+  /* Título de la sección */
+  .about-me-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--lt-primary-color);
+    letter-spacing: -0.5px;
+  }
+
+  /* Tarjeta contenedor para la Descripción "Sobre Mí" */
+  .about-me-description {
+    max-width: 820px;
+    margin: 0 auto 60px;
+    padding: 32px 36px;
+    text-align: justify;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--lt-text-color);
+    opacity: 0.95;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Skills Section (Sin tocar las pildoras ni estructura) */
+  .skills-section {
+    margin-top: 30px;
+  }
+
+  .skills-section h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--lt-primary-color);
+  }
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .skill-category {
+    background: var(--lt-card-bg);
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid var(--lt-border);
+    border-left: 6px solid var(--lt-primary-color);
+    color: var(--lt-text-color);
+    transition: var(--transition);
+  }
+
+  .skill-category:hover {
+    background: var(--terminal-surface);
+    border-color: var(--terminal-green);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  }
+
+  .skill-category:hover h3 {
+    color: var(--terminal-green);
+  }
+
+  .skill-category span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+
+  /* Philosophy Section */
+  .philosophy-section {
+    margin-top: 30px;
+  }
+
+  .philosophy-section h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: var(--lt-primary-color);
+  }
+
+  .philosophy-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .philosophy-card {
+    background: var(--lt-card-bg);
+    padding: 24px;
+    width: 300px;
+    border-radius: 8px;
+    text-align: justify;
+    font-size: 16px;
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--lt-primary-color);
+    transition: var(--transition);
+  }
+
+  .philosophy-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .philosophy-card:hover {
+    background: var(--terminal-surface);
+    border-color: var(--terminal-green);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  }
+
+  .philosophy-card:hover h3 {
+    color: var(--terminal-green);
+  }
+</style>

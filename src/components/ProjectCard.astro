@@ -1,0 +1,320 @@
+---
+import IconAndroid from "@icons/IconAndroid.astro";
+import IconCode from "@icons/IconCode.astro";
+import IconDownload from "@icons/IconDownload.astro";
+import IconOpen from "@icons/IconOpen.astro";
+import IconPwa from "@icons/IconPwa.astro";
+import IconShare from "@icons/IconShare.astro";
+import IconWeb from "@icons/IconWeb.astro";
+import IconWindows from "@icons/IconWindows.astro";
+import Carrusel from "@components/Carrusel.astro";
+import { Image } from 'astro:assets';
+import type { AppMetadata } from "@lib/AppMetadata";
+
+type Props = AppMetadata;
+
+const {
+  id,
+  title,
+  descripcion,
+  icono,
+  screenshots,
+  tags,
+  badge,
+  author,
+  url,
+  download,
+  beta,
+  github,
+  shareUrl,
+} = Astro.props;
+---
+
+<article class="project-card" id={id}>
+  <div class="project-image">
+    <Carrusel screenshots={screenshots} title={title} />
+    {
+      badge && (
+        <span class={`badge badge-${badge}`}>
+          {badge === "pwa" && <IconPwa class="icon-sm" />}
+          {badge === "web" && <IconWeb class="icon-sm" />}
+          {badge === "mobile" && <IconAndroid class="icon-sm" />}
+          {badge === "desktop" && <IconWindows class="icon-sm" />}
+        </span>
+      )
+    }
+    <button
+      class="share"
+      aria-label="Boton para compartir la aplicacion"
+      data-url={shareUrl || `https://lerma-dev.github.io/#${id}`}
+    >
+      <IconShare class="icon-sm" />
+    </button>
+    <div class="icono-app">
+      <Image class="img-icono" src={icono} alt=`Icono de ${title}` width={30} height={30}/>
+    </div>
+  </div>
+  <div class="project-info">
+    <div class="tags">
+      {tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    <h3 class="name-app">{title}</h3>
+    <p class="author-app">Creado por {author}</p>
+    <p class="desc-app">{descripcion}</p>
+    <div class="project-links">
+      {
+        url && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="links link-primary"
+          >
+            <IconOpen class="icon-sm" />
+            Abrir
+          </a>
+        )
+      }
+
+      {
+        download && (
+          <a href={download} class="links link-primary download" download>
+            <IconDownload class="icon-sm" />
+            Descargar
+          </a>
+        )
+      }
+
+      {
+        beta && (
+          <a
+            href={beta}
+            target="_blank"
+            rel="noopener noreferrer"
+            class=" links link-secondary"
+          >
+            <IconOpen class="icon-sm" />
+            Beta
+          </a>
+        )
+      }
+
+      {
+        github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="links link-secondary"
+          >
+            <IconCode class="icon-sm" />
+            Código
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  /* PROJECT CARD */
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--lt-card-bg);
+    transition: var(--lt-transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+  }
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(79, 110, 189, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+  .project-image {
+    position: relative;
+    height: 200px;
+    background: var(--lt-black-color);
+  }
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: var(--lt-bg);
+  }
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 25px;
+  }
+
+  .share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    background: var(--lt-opacity);
+    color: var(--lt-text-color);
+  }
+
+  .badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-weight: bold;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    font-size: 0.7rem;
+    color: var(--lt-text-color);
+  }
+  .badge-pwa {
+    background: var(--lt-purple-color);
+  }
+  .badge-web {
+    background: var(--lt-orange-color);
+    color: var(--lt-black-color);
+  }
+  .badge-mobile {
+    background: var(--lt-green-color);
+  }
+  .badge-desktop {
+    background: var(--lt-primary-color);
+  }
+
+  .tags span {
+    font-size: 0.7rem;
+    background: var(--lt-opacity);
+    color: var(--lt-text-color);
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-right: 6px;
+  }
+
+  .icono-app {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .icono-app .img-icono {
+    border-radius: 25%;
+  }
+  .name-app {
+    margin: 15px 0 2px;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .desc-app {
+    font-size: 0.92rem;
+    color: var(--lt-text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .author-app {
+    font-size: 0.82rem;
+    color: var(--lt-celeste-color);
+    opacity: 0.8;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .project-links {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .link-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--lt-primary-color);
+    color: var(--lt-text-color);
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: var(--lt-transition);
+  }
+  .link-primary.download {
+    background: var(--lt-green-color);
+    color: var(--lt-black-color);
+  }
+  .link-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--lt-shadow);
+    filter: brightness(1.15);
+  }
+  .link-secondary {
+    color: var(--lt-muted-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--lt-transition);
+  }
+  .link-secondary:hover {
+    color: var(--lt-text-color);
+  }
+</style>
+
+<script>
+  const share = document.querySelectorAll(".share");
+  share.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const urlProyecto = btn.getAttribute("data-url") || window.location.href;
+
+      // Busca el elemento con la clase name-app dentro de la tarjeta actual
+      const card = btn.closest(".project-card");
+      const nameAppElement = card ? card.querySelector(".name-app") : null;
+      const nombreApp = nameAppElement
+        ? nameAppElement.textContent.trim()
+        : "Aplicación";
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "lerma.dev - Aplicación",
+            text: `¡Mira esta aplicación ${nombreApp}`,
+            url: urlProyecto,
+          });
+        } catch (err) {
+          console.log("Compartir cancelado o error", err);
+          if (err instanceof Error && err.name !== "AbortError") {
+            alert("No se pudo compartir la aplicación.");
+          }
+        }
+      } else {
+        // Fallback por si el navegador no soporta Web Share API
+        navigator.clipboard.writeText(urlProyecto);
+        alert(`¡Enlace de ${nombreApp} copiado al portapapeles!`);
+      }
+    });
+  });
+</script>

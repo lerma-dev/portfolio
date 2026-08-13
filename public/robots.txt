@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /screenshots/
+Allow: /
+Sitemap: https://lerma-dev.github.io/sitemap.xml

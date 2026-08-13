@@ -1,0 +1,82 @@
+:root {
+  /* Colores personalizados */
+  --lt-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --lt-opacity: rgba(255, 255, 255, 0.08);
+  --lt-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  --lt-border: #222;
+  --lt-card-bg: #141419;
+  --lt-bg: #0a0a0a;
+  --lt-surface: #111;
+  --lt-surface2: #1a1a1a;
+  --lt-text-color: #fcfcfc;
+  --lt-muted-color: #b0b3b8;
+  --lt-primary-color: #0866ff;
+  --lt-secondary-color: #3516e4;
+  --lt-hover-color: #3558b9;
+  --lt-green-color: #42b72a;
+  --lt-red-color: #f02849;
+  --lt-orange-color: #f97316;
+  --lt-purple-color: #b5179e;
+  --lt-celeste-color: #60a5fa;
+  --lt-black-color: #000;
+  /* Colores Terminal */
+  --terminal-bg: #0c0f12;
+  --terminal-surface: #161b22;
+  --terminal-border: #21262d;
+  --terminal-green: #2ecc71;
+  --terminal-blue: #3498db;
+  --terminal-yellow: #f1c40f;
+  --terminal-red: #e74c3c;
+  --terminal-purple: #9b59b6;
+  --terminal-text: #ecf0f1;
+  --terminal-muted: #7f8c8d;
+  --terminal-glow: rgba(46, 204, 113, 0.15);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+svg {
+  pointer-events: none;
+}
+body {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--lt-bg);
+  color: var(--lt-text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.icon-sm {
+  width: 20px;
+  height: 20px;
+}
+.icon-md {
+  width: 25px;
+  height: 25px;
+}
+.icon-lg {
+  width: 30px;
+  height: 30px;
+}
+.icon-xl {
+  width: 50px;
+  height: 50px;
+}
+.icon-sm,
+.icon-md,
+.icon-lg,
+.icon-xl {
+  flex-shrink: 0;
+}
+

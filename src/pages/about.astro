@@ -1,0 +1,107 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { About } from "@lib/Metadata.ts";
+---
+
+<Layout {...About}>
+  <section class="about-section">
+    <div class="container">
+      <h1 class="about-title">¿Para qué se creó este portal?</h1>
+      <p class="about-description">
+        Este portal nace para exponer y poner a tu disposición aplicaciones web
+        locales e independientes que no suelen destacar en buscadores
+        convencionales. Arrancamos con mi reproductor de música libre de
+        anuncios y seguiré sumando nuevas herramientas. Sígueme en redes
+        sociales para enterarte de los próximos lanzamientos ¡Gracias por
+        formar parte de esto!
+      </p>
+      <ul class="about-points">
+        <li class="about-point">
+          <strong class="about-subtitle">Sin anuncios invasivos: </strong>
+          Disfruta explorando las herramientas de este portal con total tranquilidad.
+          mis aplicaciones no contienen ningún tipo de publicidad. Mi objetivo es
+          ofrecerte una experencia fluida y sin interrupciones, permitiendote concentrarte
+          en lo que realmente importa: disfrutar de las aplicaciones y compartir tus
+          opiniones para mejorarlas.
+        </li>
+        <li class="about-point">
+          <strong class="about-subtitle">Compartir para seguir mejorando: </strong>
+          Invita a tus amigos y familiares a explorar las aplicaciones y compartir
+          sus experiencias. Cuanto más se difunda, mejor será la experiencia para
+          todos.
+        </li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-section {
+    padding: 100px 0;
+    background: var(--lt-bg);
+    text-align: center;
+  }
+
+  .about-section p {
+    max-width: 750px;
+    margin: 0 auto;
+    color: var(--lt-text-color);
+    font-size: 1.05rem;
+  }
+
+  .about-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: var(--lt-primary-color);
+  }
+
+  .about-subtitle {
+    color: var(--lt-primary-color);
+  }
+
+  .about-description {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: justify;
+    font-size: 19px;
+    opacity: 0.9;
+    color: var(--lt-text-color);
+    user-select: none;
+  }
+
+  .about-section ul {
+    list-style: none;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: justify;
+    opacity: 0.8;
+  }
+
+  /* cards */
+  .about-points {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-point {
+    background: var(--lt-surface);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--lt-border);
+    border-left: 6px solid var(--lt-primary-color);
+    color: var(--lt-text-color);
+    transition: var(--lt-transition);
+    user-select: none;
+  }
+
+  .about-point:hover {
+    background: var(--terminal-surface);
+    border-color: var(--terminal-green);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  }
+
+  .about-point:hover .about-subtitle {
+    color: var(--terminal-green);
+  }
+</style>
