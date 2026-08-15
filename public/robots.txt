@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /screenshots/
 Allow: /
-Sitemap: https://lerma-dev.github.io/sitemap.xml
+Sitemap: https://lerma-dev.vercel.app/sitemap.xml
