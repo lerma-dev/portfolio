@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lerma-dev.github.io',
+  site: 'https://lerma-dev.vercel.app',
   vite: {
     resolve: {
       alias: {
