@@ -1,9 +1,14 @@
 :root {
   /* Colores personalizados */
   --lt-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --lt-opacity: rgba(255, 255, 255, 0.08);
+  --lt-gradient: radial-gradient(
+    circle at 50% 180px, 
+    rgba(23, 166, 248, 0.15) 0%,
+    transparent 70%
+  );
+  --lt-opacity: rgba(255, 255, 255, 0.089);
   --lt-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  --lt-border: #222;
+  --lt-border: #444444;
   --lt-card-bg: #141419;
   --lt-bg: #0a0a0a;
   --lt-surface: #111;
@@ -19,6 +24,7 @@
   --lt-purple-color: #b5179e;
   --lt-celeste-color: #60a5fa;
   --lt-black-color: #000;
+  --lt-dark-petroleum: rgb(26, 38, 43);
   /* Colores Terminal */
   --terminal-bg: #0c0f12;
   --terminal-surface: #161b22;
@@ -30,53 +36,54 @@
   --terminal-purple: #9b59b6;
   --terminal-text: #ecf0f1;
   --terminal-muted: #7f8c8d;
-  --terminal-glow: rgba(46, 204, 113, 0.15);
+  --terminal-glow: rgba(46, 204, 113, 0.20);
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;
 }
 html {
   scroll-behavior: smooth;
-}
-svg {
-  pointer-events: none;
+  overflow-x: hidden;
+  width: 100%;
 }
 body {
-  font-family:
+  font-family: 
     "Segoe UI",
     system-ui,
     -apple-system,
     sans-serif;
-  background-color: var(--lt-bg);
-  color: var(--lt-text-color);
   line-height: 1.6;
+  width: 100%;
   overflow-x: hidden;
+  color: var(--lt-text-color);
+  background-color: var(--lt-bg);
 }
-.icon-sm {
-  width: 20px;
-  height: 20px;
+button, a, span {
+  user-select: none;
 }
-.icon-md {
-  width: 25px;
-  height: 25px;
+svg {
+  pointer-events: none;
 }
-.icon-lg {
-  width: 30px;
-  height: 30px;
+hr {
+  border: none;
+  margin: 0 auto;
+  height: 1px;
+  background: var(--lt-border);
+  opacity: 0.5;
+  width: 100%;
 }
-.icon-xl {
-  width: 50px;
-  height: 50px;
-}
+/* TAMAÑOS DE ICONOS */
+.icon-sm { width: 20px; height: 20px; }
+.icon-md { width: 25px; height: 25px; }
+.icon-lg { width: 30px; height: 30px; }
+.icon-xl { width: 50px; height: 50px; }
+
 .icon-sm,
 .icon-md,
 .icon-lg,
 .icon-xl {
   flex-shrink: 0;
 }
-

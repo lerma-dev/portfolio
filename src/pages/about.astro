@@ -2,106 +2,331 @@
 import Layout from "@layouts/Layout.astro";
 import { About } from "@lib/Metadata.ts";
 ---
-
 <Layout {...About}>
   <section class="about-section">
-    <div class="container">
-      <h1 class="about-title">¿Para qué se creó este portal?</h1>
-      <p class="about-description">
-        Este portal nace para exponer y poner a tu disposición aplicaciones web
-        locales e independientes que no suelen destacar en buscadores
-        convencionales. Arrancamos con mi reproductor de música libre de
-        anuncios y seguiré sumando nuevas herramientas. Sígueme en redes
-        sociales para enterarte de los próximos lanzamientos ¡Gracias por
-        formar parte de esto!
-      </p>
-      <ul class="about-points">
-        <li class="about-point">
-          <strong class="about-subtitle">Sin anuncios invasivos: </strong>
-          Disfruta explorando las herramientas de este portal con total tranquilidad.
-          mis aplicaciones no contienen ningún tipo de publicidad. Mi objetivo es
-          ofrecerte una experencia fluida y sin interrupciones, permitiendote concentrarte
-          en lo que realmente importa: disfrutar de las aplicaciones y compartir tus
-          opiniones para mejorarlas.
-        </li>
-        <li class="about-point">
-          <strong class="about-subtitle">Compartir para seguir mejorando: </strong>
-          Invita a tus amigos y familiares a explorar las aplicaciones y compartir
-          sus experiencias. Cuanto más se difunda, mejor será la experiencia para
-          todos.
-        </li>
-      </ul>
+    <div class="about-container">
+      <!-- Encabezado -->
+      <div class="about-hero">
+        <span class="about-label">SOBRE EL PORTAL</span>
+        <h1>
+          Un espacio para crear,
+          <span>compartir y experimentar.</span>
+        </h1>
+        <p class="about-intro">
+          Este portal nace para exponer y poner a tu disposición aplicaciones
+          web locales e independientes que no suelen destacar en buscadores
+          convencionales.
+        </p>
+      </div>
+
+      <!-- Separador -->
+      <hr class="about-divider"/>
+
+      <!-- Contenido -->
+      <div class="about-content">
+        <div class="about-description">
+          <h2>¿Para qué se creó este portal?</h2>
+          <p>
+            Arrancamos con mi reproductor de música libre de anuncios y
+            seguiré sumando nuevas herramientas y proyectos. La idea es crear
+            un espacio donde puedas descubrir aplicaciones independientes,
+            utilizarlas y compartir tu opinión para ayudar a mejorarlas.
+          </p>
+          <p>
+            Este portal también representa una parte de mi camino como
+            desarrollador: experimentar con nuevas ideas, construir soluciones
+            y ponerlas al alcance de otras personas.
+          </p>
+        </div>
+
+        <!-- Tarjetas -->
+        <div class="about-points">
+          <article class="about-card">
+            <div class="card-icon">
+              <span>01</span>
+            </div>
+            <div class="card-content">
+              <h3>Sin anuncios invasivos</h3>
+
+              <p>
+                Disfruta explorando las herramientas de este portal con total
+                tranquilidad. Mis aplicaciones no contienen publicidad invasiva.
+                Mi objetivo es ofrecerte una experiencia fluida y sin
+                interrupciones.
+              </p>
+            </div>
+          </article>
+
+          <article class="about-card">
+            <div class="card-icon">
+              <span>02</span>
+            </div>
+
+            <div class="card-content">
+              <h3>Compartir para seguir mejorando</h3>
+
+              <p>
+                Invita a tus amigos y familiares a explorar las aplicaciones.
+                Compartir sus experiencias y opiniones ayuda a que los proyectos
+                continúen creciendo y mejorando.
+              </p>
+            </div>
+          </article>
+
+          <article class="about-card">
+            <div class="card-icon">
+              <span>03</span>
+            </div>
+
+            <div class="card-content">
+              <h3>Proyectos independientes</h3>
+
+              <p>
+                Aquí encontrarás herramientas desarrolladas de forma
+                independiente, pensadas para resolver necesidades concretas y
+                experimentar con nuevas ideas.
+              </p>
+            </div>
+          </article>
+        </div>
+
+      </div>
     </div>
   </section>
 </Layout>
 
 <style>
   .about-section {
-    padding: 100px 0;
-    background: var(--lt-bg);
+    position: relative;
+    overflow: hidden;
+    padding: 110px 20px 90px;
+    background: var(--lt-gradient);
+    color: var(--lt-text-color);
+  }
+  .about-section::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 1px solid rgba(0, 102, 255, 0.08);
+    pointer-events: none;
+  }
+  .about-container {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1000px);
+    margin: 0 auto;
+  }
+
+  /*  HERO */
+  .about-hero {
+    max-width: 850px;
+    margin: 30px auto;
     text-align: center;
   }
-
-  .about-section p {
-    max-width: 750px;
-    margin: 0 auto;
+  .about-label {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 7px 13px;
+    border: 1px solid rgba(0, 102, 255, 0.35);
+    border-radius: 100px;
+    background: rgba(0, 102, 255, 0.08);
+    color: var(--lt-primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+  .about-hero h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.04em;
     color: var(--lt-text-color);
-    font-size: 1.05rem;
   }
-
-  .about-title {
-    font-size: 25px;
-    margin-bottom: 20px;
+  .about-hero h1 span {
+    display: block;
     color: var(--lt-primary-color);
   }
-
-  .about-subtitle {
-    color: var(--lt-primary-color);
+  .about-intro {
+    max-width: 760px;
+    margin: 28px auto 0;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--lt-text-color);
+    opacity: 0.72;
   }
 
+  /* DIVISOR */
+  .about-divider {
+    width: 100%;
+    height: 1px;
+    margin: 75px 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--lt-border),
+      transparent
+    );
+  }
+
+  /* CONTENIDO */
+  .about-content {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 70px;
+    align-items: start;
+  }
   .about-description {
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: justify;
-    font-size: 19px;
-    opacity: 0.9;
+    position: sticky;
+    top: 120px;
+  }
+  .about-description h2 {
+    margin: 0 0 20px;
+    font-size: 1.8rem;
+    line-height: 1.2;
     color: var(--lt-text-color);
-    user-select: none;
+  }
+  .about-description h2::before {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 4px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    background: var(--lt-primary-color);
+  }
+  .about-description p {
+    margin: 0 0 20px;
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: left;
+    opacity: 0.72;
   }
 
-  .about-section ul {
-    list-style: none;
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: justify;
-    opacity: 0.8;
-  }
-
-  /* cards */
+  /* TARJETAS */
   .about-points {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
-
-  .about-point {
-    background: var(--lt-surface);
-    padding: 20px;
-    border-radius: 8px;
+  .about-card {
+    display: flex;
+    gap: 22px;
+    padding: 25px;
     border: 1px solid var(--lt-border);
-    border-left: 6px solid var(--lt-primary-color);
-    color: var(--lt-text-color);
-    transition: var(--lt-transition);
-    user-select: none;
+    border-radius: 14px;
+    background: var(--lt-surface);
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .about-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--lt-primary-color);
+    box-shadow:
+      0 12px 35px rgba(0, 0, 0, 0.25),
+      0 0 25px rgba(0, 102, 255, 0.08);
+  }
+  .card-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(0, 102, 255, 0.1);
+    border: 1px solid rgba(0, 102, 255, 0.25);
+  }
+  .card-icon span {
+    color: var(--lt-primary-color);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+  .card-content {
+    flex: 1;
+  }
+  .about-card h3 {
+    margin: 2px 0 9px;
+    font-size: 1.05rem;
+    color: var(--lt-primary-color);
+  }
+  .about-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.72;
   }
 
-  .about-point:hover {
-    background: var(--terminal-surface);
-    border-color: var(--terminal-green);
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  @media (max-width: 899px) {
+    .about-section {
+      padding: 80px 20px 70px;
+    }
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 45px;
+    }
+    .about-description {
+      position: static;
+    }
+    .about-divider {
+      margin: 55px 0;
+    }
+    .about-description h2 {
+      font-size: 1.6rem;
+    }
+    .about-description p {
+      text-align: justify;
+    }
   }
-
-  .about-point:hover .about-subtitle {
-    color: var(--terminal-green);
+  @media (max-width: 599px) {
+    .about-section {
+      padding: 65px 16px 55px;
+    }
+    .about-label {
+      font-size: 0.68rem;
+      padding: 6px 11px;
+    }
+    .about-hero h1 {
+      font-size: 2rem;
+    }
+    .about-intro {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+    .about-divider {
+      margin: 45px 0;
+    }
+    .about-description h2 {
+      font-size: 1.4rem;
+    }
+    .about-description p {
+      font-size: 0.94rem;
+    }
+    .about-card {
+      gap: 15px;
+      padding: 20px;
+    }
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .about-card h3 {
+      font-size: 0.98rem;
+    }
+    .about-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
   }
 </style>

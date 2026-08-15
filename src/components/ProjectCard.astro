@@ -43,11 +43,9 @@ const {
         </span>
       )
     }
-    <button
+    <button aria-label="Boton para compartir la aplicacion"
       class="share"
-      aria-label="Boton para compartir la aplicacion"
-      data-url={shareUrl || `https://lerma-dev.github.io/#${id}`}
-    >
+      data-url={shareUrl || `https://lerma-dev.github.io/#${id}`}>
       <IconShare class="icon-sm" />
     </button>
     <div class="icono-app">
@@ -64,23 +62,14 @@ const {
     <div class="project-links">
       {
         url && (
-          <a
+          <a 
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            class="links link-primary"
-          >
-            <IconOpen class="icon-sm" />
+            aria-label={`Abrir la aplicacion ${title}`}
+            class="links link-primary">
+            <IconOpen class="icon-sm" aria-hidden="true"/>
             Abrir
-          </a>
-        )
-      }
-
-      {
-        download && (
-          <a href={download} class="links link-primary download" download>
-            <IconDownload class="icon-sm" />
-            Descargar
           </a>
         )
       }
@@ -91,10 +80,23 @@ const {
             href={beta}
             target="_blank"
             rel="noopener noreferrer"
-            class=" links link-secondary"
-          >
-            <IconOpen class="icon-sm" />
+            aria-label={`Abrir Beta de la aplicacion ${title}`}
+            class=" links link-secondary">
+            <IconOpen class="icon-sm" aria-hidden="true"/>
             Beta
+          </a>
+        )
+      }
+
+      {
+        download && (
+          <a 
+            href={download} 
+            aria-label={`Descargar la aplicacion ${title}`}
+            class="links link-primary download" 
+            download>
+            <IconDownload class="icon-sm" aria-hidden="true"/>
+            Descargar
           </a>
         )
       }
@@ -105,9 +107,9 @@ const {
             href={github}
             target="_blank"
             rel="noopener noreferrer"
-            class="links link-secondary"
-          >
-            <IconCode class="icon-sm" />
+            aria-label={`Codigo de la aplicacion ${title}`}
+            class="links link-secondary">
+            <IconCode class="icon-sm" aria-hidden="true"/>
             Código
           </a>
         )
@@ -149,7 +151,6 @@ const {
     flex-grow: 1;
     padding: 25px;
   }
-
   .share {
     display: flex;
     justify-content: center;
@@ -166,7 +167,6 @@ const {
     background: var(--lt-opacity);
     color: var(--lt-text-color);
   }
-
   .badge {
     display: flex;
     justify-content: center;
@@ -194,7 +194,6 @@ const {
   .badge-desktop {
     background: var(--lt-primary-color);
   }
-
   .tags span {
     font-size: 0.7rem;
     background: var(--lt-opacity);
@@ -204,7 +203,6 @@ const {
     border-radius: 6px;
     margin-right: 6px;
   }
-
   .icono-app {
     position: absolute;
     bottom: 0;
@@ -237,7 +235,6 @@ const {
     align-items: center;
     gap: 6px;
   }
-
   .project-links {
     margin-top: auto;
     display: flex;
@@ -281,40 +278,57 @@ const {
   .link-secondary:hover {
     color: var(--lt-text-color);
   }
+
+  @media (max-width: 480px) {
+    .project-info {
+      padding: 20px 16px;
+      font-size: small;
+    }
+    .icono-app {
+      left: 15px;
+    }
+    .project-links {
+      gap: 12px; 
+      flex-wrap: wrap;
+    }
+  }
 </style>
 
 <script>
-  const share = document.querySelectorAll(".share");
-  share.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const urlProyecto = btn.getAttribute("data-url") || window.location.href;
+  function ShareApp(){
+    const share = document.querySelectorAll(".share");
+    share.forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const urlProyecto = btn.getAttribute("data-url") || window.location.href;
 
-      // Busca el elemento con la clase name-app dentro de la tarjeta actual
-      const card = btn.closest(".project-card");
-      const nameAppElement = card ? card.querySelector(".name-app") : null;
-      const nombreApp = nameAppElement
-        ? nameAppElement.textContent.trim()
-        : "Aplicación";
+        // Busca el elemento con la clase name-app dentro de la tarjeta actual
+        const card = btn.closest(".project-card");
+        const nameAppElement = card ? card.querySelector(".name-app") : null;
+        const nombreApp = nameAppElement
+          ? nameAppElement.textContent.trim()
+          : "Aplicación";
 
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: "lerma.dev - Aplicación",
-            text: `¡Mira esta aplicación ${nombreApp}`,
-            url: urlProyecto,
-          });
-        } catch (err) {
-          console.log("Compartir cancelado o error", err);
-          if (err instanceof Error && err.name !== "AbortError") {
-            alert("No se pudo compartir la aplicación.");
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "lerma.dev - Aplicación",
+              text: `¡Mira esta aplicación ${nombreApp}`,
+              url: urlProyecto,
+            });
+          } catch (err) {
+            console.log("Compartir cancelado o error", err);
+            if (err instanceof Error && err.name !== "AbortError") {
+              alert("No se pudo compartir la aplicación.");
+            }
           }
+        } else {
+          // Fallback por si el navegador no soporta Web Share API
+          navigator.clipboard.writeText(urlProyecto);
+          alert(`¡Enlace de ${nombreApp} copiado al portapapeles!`);
         }
-      } else {
-        // Fallback por si el navegador no soporta Web Share API
-        navigator.clipboard.writeText(urlProyecto);
-        alert(`¡Enlace de ${nombreApp} copiado al portapapeles!`);
-      }
+      });
     });
-  });
+  }
+  document.addEventListener("DOMContentLoaded", ShareApp);
 </script>

@@ -1,90 +1,113 @@
 ---
-import Logo from '@icons/Logo.astro';
-import IconGithub from '@icons/IconGithub.astro';
-import IconMenu from '@icons/IconMenu.astro';
+import Logo from "@icons/Logo.astro";
+import IconGithub from "@icons/IconGithub.astro";
+import IconMenu from "@icons/IconMenu.astro";
+import IconClose from "@icons/IconClose.astro";
 ---
-<header>
-  <nav id="navbar" class="nav-center">
-    <a id="logo-navbar" class="logo" href="/">
-      <Logo class="icon-xl"/>
-      <div class="logo-text">
-        lerma<span>.dev</span>
-      </div>
-    </a>
-    <div class="menu-toggle" id="menu-toggle">
-      <IconMenu id="menu-icon" />
+
+<header class="header">
+  <a class="logo" href="/" aria-label="Página principal de lerma.dev">
+    <Logo class="icon-xl" aria-hidden="true"/>
+    <div class="logo-text" aria-hidden="true">
+      lerma<span>.dev</span>
     </div>
-    <div class="nav-links" id="nav-links">
-      <a href="/#aplicaciones">Aplicaciones</a>
-      <a href="/about">Sobre el Portal</a>
-      <a href="/about-me">Sobre Mi</a>
-      <a href="https://github.com/lerma-dev" class="btn-github" target="_blank" rel="noopener noreferrer">
-        <IconGithub class="icon-md"/>  
-        Github
-      </a>   
-    </div>
+  </a>
+  <button aria-label="Abrir Menu de navegación"
+    aria-expanded="false" 
+    aria-controls="nav-links"
+    class="toggle"
+    id="menu-toggle">
+    <IconMenu class="icon-lg open" aria-hidden="true"/>
+    <IconClose class="icon-lg close" aria-hidden="true"/>
+  </button>
+  <nav aria-label="Navegacion Principal" 
+    class="links" id="nav-links">
+    <ul class="nav-list">
+      <li><a href="/#aplicaciones">Aplicaciones</a></li>
+      <li><a href="/about">Sobre el Portal</a></li>
+      <li><a href="/about-me">Sobre Mi</a></li>
+      <li>
+        <a href="https://github.com/lerma-dev"
+          aria-label="Perfil de GitHub de lerma-dev (abre en una nueva pestaña)"
+          class="github"
+          target="_blank"
+          rel="noopener noreferrer">
+          <IconGithub class="icon-md" aria-hidden="true"/>
+          <span>Github</span>
+        </a>
+    </li>
+    </ul>
   </nav>
 </header>
 
 <style>
-  /* NAVBAR - ESTILO DOCK FLOTANTE */
-  nav {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    min-width: 60%;
-    max-width: 90%;
-    height: 60px;
-    padding: 0 24px;
+  header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    width: auto;
+    min-width: 60%;
+    max-width: 90%;
+    transform: translateX(-50%);
+    -webkit-backdrop-filter: blur(12px);
+    height: 60px;
+    padding: 0 24px;
     gap: 30px;
-    backdrop-filter: blur(12px);
-    --webkit-backdrop-filter: blur(12px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(12px);
     z-index: 1000;
   }
-  .nav-center {
+  .header {
     font-size: 0.85rem;
     background: rgba(255, 255, 255, 0.04);
     padding: 6px 14px;
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.04);
   }
-
-  /* Links de la navegacion */
-  .nav-links {
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  .nav-list li {
+    display: flex;
+    flex-direction: column;
+  }
+  .links {
     display: flex;
     gap: 10px;
   }
-  .nav-links a {
-    color: var(--lt-text-color);
+  .links a {
     text-decoration: none;
+    text-align: center;
     font-size: 0.85rem;
     font-weight: 500;
     padding: 6px 14px;
     border-radius: 20px;
+    color: var(--lt-text-color);
     transition: var(--transition);
     opacity: 0.9;
   }
-  .nav-links a:hover {
+  .links a:hover {
     background: rgba(255, 255, 255, 0.08);
     opacity: 1;
     color: #fff;
   }
-  .btn-github {
+  .github {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.05);  
-    gap: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 8px;
   }
-
-  /* --- LOGO --- */
   .logo {
     display: flex;
     justify-content: center;
@@ -104,4 +127,106 @@ import IconMenu from '@icons/IconMenu.astro';
   .logo-text span {
     color: var(--lt-primary-color);
   }
+  .toggle{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--lt-border);
+    background: var(--lt-opacity);
+    color: var(--lt-text-color);
+  }
+
+  @media (min-width: 300px) and (max-width: 899px) {
+    header {
+      width: 90%;
+    }
+    .logo svg {
+      width: 40px;
+      height: 40px;
+    }
+    .logo-text {
+      font-size: 1.2rem;
+    }
+    .toggle, .open {
+      display: flex;
+    }
+    .toggle .close {
+      display: none;
+    }
+    .toggle.active .open {
+      display: none;
+    }
+    .toggle.active .close {
+      display: flex;
+    }
+    .links.active {
+      display: flex;
+    }
+    .nav-list {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .links{
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      top: 65px;
+      right: 16px;
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 12px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      background: var(--lt-dark-petroleum);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px;
+      gap: 10px;
+      z-index: 1001;
+    }
+    .links a {
+      text-align: center;
+      font-size: 1.2rem;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  @media (min-width: 900px) and (max-width: 1023px) {
+    header {
+      width: 95%;
+    }
+    .nav-links a {
+      padding: 6px 10px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    header {
+      width: 70%;
+    }
+  }
 </style>
+
+<script>
+  function Menu(){
+    const toggle = document.getElementById("menu-toggle");
+    const links = document.getElementById("nav-links");
+    if (!toggle || !links) return;
+
+    toggle.addEventListener("click", () => {
+      links.classList.toggle("active");
+      toggle.classList.toggle("active");
+
+      const isOpen = toggle.classList.contains("active");
+
+      toggle.setAttribute(
+        "aria-label", isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+      );
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+  document.addEventListener("DOMContentLoaded", Menu);
+</script>
