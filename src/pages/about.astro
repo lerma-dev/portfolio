@@ -1,7 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { About } from "@lib/Metadata.ts";
+import { About } from "@lib/SEO";
 ---
+
 <Layout {...About}>
   <section class="about-section">
     <div class="about-container">
@@ -20,22 +21,22 @@ import { About } from "@lib/Metadata.ts";
       </div>
 
       <!-- Separador -->
-      <hr class="about-divider"/>
+      <hr class="about-divider" />
 
       <!-- Contenido -->
       <div class="about-content">
         <div class="about-description">
           <h2>¿Para qué se creó este portal?</h2>
           <p>
-            Arrancamos con mi reproductor de música libre de anuncios y
-            seguiré sumando nuevas herramientas y proyectos. La idea es crear
-            un espacio donde puedas descubrir aplicaciones independientes,
-            utilizarlas y compartir tu opinión para ayudar a mejorarlas.
+            Arrancamos con mi reproductor de música libre de anuncios y seguiré
+            sumando nuevas herramientas y proyectos. La idea es crear un espacio
+            donde puedas descubrir aplicaciones independientes, utilizarlas y
+            compartir tu opinión para ayudar a mejorarlas.
           </p>
           <p>
             Este portal también representa una parte de mi camino como
-            desarrollador: experimentar con nuevas ideas, construir soluciones
-            y ponerlas al alcance de otras personas.
+            desarrollador: experimentar con nuevas ideas, construir soluciones y
+            ponerlas al alcance de otras personas.
           </p>
         </div>
 
@@ -89,7 +90,6 @@ import { About } from "@lib/Metadata.ts";
             </div>
           </article>
         </div>
-
       </div>
     </div>
   </section>

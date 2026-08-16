@@ -1,29 +1,49 @@
 ---
-import '@styles/global.css';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import type { Metadata } from '@lib/Metadata';
+import "@styles/global.css";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import type { Metadata } from "@lib/SEO";
 type Props = Metadata;
-const { title, descripcion, canonical = Astro.url.pathname ,keywords } = Astro.props;
-const siteCannon = new URL(canonical, Astro.site)
+const {
+  title,
+  descripcion,
+  canonical = Astro.url.pathname,
+  keywords,
+  image = Astro.url.pathname,
+} = Astro.props;
+const siteCannon = new URL(canonical, Astro.site);
+const siteImage = new URL(image, Astro.site);
 ---
 <!doctype html>
 <html lang="es-MX">
-	<head>
-		<title>{title}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content={descripcion} />
-		<meta name="keywords" content={keywords} />
-		<link rel="canonical" href={siteCannon} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-	</head>
-	<body>	
-		<Header />
-		<main>	
-			<slot />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <title>{title}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={descripcion} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={siteCannon} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="lerma.dev" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={siteCannon} />
+    <meta property="og:image" content={siteImage} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={descripcion} />
+    <meta name="twitter:image" content={siteImage} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>

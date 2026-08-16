@@ -1,5 +1,5 @@
 ---
-import { Main } from "@lib/Metadata.ts";
+import { Main } from "@lib/SEO";
 import Layout from "@layouts/Layout.astro";
 import IconVerified from "@icons/IconVerified.astro";
 import IconNoads from "@icons/IconNoads.astro";
@@ -21,11 +21,19 @@ import { Projects } from "@lib/AppMetadata.ts";
       </p>
       <div class="hero-features">
         <span>
-          <IconVerified style="color: #3eee87" class="icon-sm" aria-hidden="true" />
+          <IconVerified
+            style="color: #3eee87"
+            class="icon-sm"
+            aria-hidden="true"
+          />
           Verificado
         </span>
         <span>
-          <IconNoads style="color: #ce4242" class="icon-sm" aria-hidden="true" />
+          <IconNoads
+            style="color: #ce4242"
+            class="icon-sm"
+            aria-hidden="true"
+          />
           No anuncios
         </span>
         <span>
@@ -54,7 +62,7 @@ import { Projects } from "@lib/AppMetadata.ts";
   }
   .hero-content {
     max-width: 800px;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 0 20px;
     text-align: center;
   }
