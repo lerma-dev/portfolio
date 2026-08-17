@@ -26,30 +26,36 @@ const {
   download,
   beta,
   github,
-  shareUrl,
 } = Astro.props;
+const share = Astro.site;
+const badgeLabels: Record<NonNullable<AppMetadata["badge"]>, string> = {
+  pwa: "Aplicación PWA",
+  web: "Aplicación Web",
+  android: "Aplicación para Android",
+  windows: "Aplicación para Windows",
+};
 ---
 
 <article class="project-card" id={id}>
-  <div class="project-image">
+  <div class="project-slides">
     <Carrusel screenshots={screenshots} title={title} />
     {
       badge && (
-        <span class={`badge badge-${badge}`}>
-          {badge === "pwa" && <IconPwa class="icon-sm" />}
-          {badge === "web" && <IconWeb class="icon-sm" />}
-          {badge === "mobile" && <IconAndroid class="icon-sm" />}
-          {badge === "desktop" && <IconWindows class="icon-sm" />}
+        <span class={`badge badge-${badge}`} aria-label={badgeLabels[badge]}>
+          {badge === "pwa" && <IconPwa class="icon-sm" aria-hidden="true"/>}
+          {badge === "web" && <IconWeb class="icon-sm" aria-hidden="true"/>}
+          {badge === "android" && <IconAndroid class="icon-sm" aria-hidden="true"/>}
+          {badge === "windows" && <IconWindows class="icon-sm" aria-hidden="true"/>}
         </span>
       )
     }
     <button aria-label="Boton para compartir la aplicacion"
       class="share"
-      data-url={shareUrl || `https://lerma-dev.github.io/#${id}`}>
-      <IconShare class="icon-sm" />
+      data-url={`${share}#${id}`}>
+      <IconShare class="icon-sm" aria-hidden="true"/>
     </button>
     <div class="icono-app">
-      <Image class="img-icono" src={icono} alt=`Icono de ${title}` width={30} height={30}/>
+      <Image class="img-icono" src={icono} alt=`Icono de ${title}` width={150} height={150}/>
     </div>
   </div>
   <div class="project-info">
@@ -134,12 +140,12 @@ const {
     border-color: rgba(79, 110, 189, 0.4);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   }
-  .project-image {
+  .project-slides {
     position: relative;
     height: 200px;
     background: var(--lt-black-color);
   }
-  .project-image img {
+  .project-slides img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -188,10 +194,10 @@ const {
     background: var(--lt-orange-color);
     color: var(--lt-black-color);
   }
-  .badge-mobile {
+  .badge-android {
     background: var(--lt-green-color);
   }
-  .badge-desktop {
+  .badge-windows {
     background: var(--lt-primary-color);
   }
   .tags span {
@@ -207,8 +213,8 @@ const {
     position: absolute;
     bottom: 0;
     left: 5%;
-    width: 60px !important;
-    height: 60px !important;
+    width: 60px;
+    height: 60px;
   }
   .icono-app .img-icono {
     border-radius: 25%;

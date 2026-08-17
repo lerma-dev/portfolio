@@ -11,7 +11,7 @@ export const Main: Metadata = {
   descripcion: "Portal oficial de lerma.dev. Encuentra aplicaciones web, PWA, APKs y ejecutables creados por Héctor Lerma, libres de anuncios y de uso libre.",
   keywords: "APK Gratuitos, Aplicaciones, Software Libre, Libres Anuncios",
   canonical: "/",
-  image: "/og-image.png"
+  image: "/og-image.webp"
 }
 
 export const About: Metadata = {
@@ -19,7 +19,7 @@ export const About: Metadata = {
   descripcion: "Conoce el propósito detrás del portal de lerma-dev. Herramientas y aplicaciones libres de anuncios, enfocadas en la privacidad, el código abierto y el software independiente.",
   keywords: "Portal Oficial, Software Libre, Privacidad, Código Abierto, Apps Sin Anuncios, lerma-dev",
   canonical: "/about",
-  image: "/og-image.png"
+  image: "/og-image.webp"
 };
 
 export const AboutMe: Metadata = {

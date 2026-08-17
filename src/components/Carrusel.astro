@@ -16,8 +16,8 @@ const { screenshots, title } = Astro.props;
           src={src}
           alt={`Vista previa ${index + 1} de ${title}`}
           class="imgs-carousel"
-          width={100}
-          height={100}
+          width={800}
+          height={450}
         />
       ))
     }
@@ -51,12 +51,12 @@ const { screenshots, title } = Astro.props;
     transition: transform 0.4s ease-in-out;
   }
   .carousel-track .imgs-carousel {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    height: 100% !important;
+    width: 100% ;
+    max-width: 100%;
+    min-width: 100%;
+    height: 100%;
     object-fit: contain;
-    background-color: #050508;
+    background-color: #363646;
     flex-shrink: 0;
   }
   .carousel-btn {
@@ -126,5 +126,4 @@ const { screenshots, title } = Astro.props;
     });
   }
   document.addEventListener("DOMContentLoaded", initCarousels);
-  document.addEventListener("astro:page-load", initCarousels);
 </script>
