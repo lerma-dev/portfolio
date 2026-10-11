@@ -40,8 +40,8 @@ export const Projects: AppMetadata[] = [
     ],
     tags: ["Audio Activo", "Offline", "Privado"],  
     badge: "windows",
-    download: "https://github.com/lerma-dev/local-tunes/releases/download/v1.6.6/local_tunes_v1.6.6.exe",
-    github: "https://github.com/lerma-dev/local-tunes",
+    download: "https://github.com/lerma-dev/local-tunes-desktop/releases/download/v1.0.0/local-tunes-v1.0.0-Universal.exe",
+    github: "https://github.com/lerma-dev/local-tunes-desktop",
   },
   {
     id: "tictactoe-android",
