@@ -40,7 +40,7 @@ export const Projects: AppMetadata[] = [
     ],
     tags: ["Audio Activo", "Offline", "Privado"],  
     badge: "windows",
-    download: "https://github.com/lerma-dev/local-tunes-desktop/releases/download/v1.0.0/local-tunes-v1.0.0-Universal.exe",
+    download: "https://github.com/lerma-dev/local-tunes-desktop/releases/latest/download/LocalTunes-setup.exe",
     github: "https://github.com/lerma-dev/local-tunes-desktop",
   },
   {
