@@ -37,6 +37,10 @@ export const Projects: AppMetadata[] = [
     icono: "/screenshots/local-tunes-win/icon.svg",
     screenshots: [
       "/screenshots/local-tunes-win/01.webp",
+      "/screenshots/local-tunes-win/02.webp",
+      "/screenshots/local-tunes-win/03.webp",
+      "/screenshots/local-tunes-win/04.webp",
+      "/screenshots/local-tunes-win/05.webp"
     ],
     tags: ["Audio Activo", "Offline", "Privado"],  
     badge: "windows",
